@@ -8,8 +8,7 @@ def check_capacity(max_capacity: int, guests: list) -> bool:
         check_out = guest["check-out"]
         guest_event.append((check_in, 1))
         guest_event.append((check_out, -1))
-    guest_event.sort(key=sort_key)
-
+    guest_event.sort(key= lambda x: x)
     current_guests = 0
     for event in guest_event:
         current_guests += event[1]
@@ -17,9 +16,6 @@ def check_capacity(max_capacity: int, guests: list) -> bool:
             return False
     return True
 
-def sort_key(event: tuple[int, int]) -> tuple[int, int]:
-    date, change = event
-    return date, change
 
 if __name__ == "__main__":
     # Чтение входных данных
